@@ -1,0 +1,7 @@
+setuptools
+robotframework
+robotframework-faker
+robotframework-requests
+requests
+faker
+python-dotenv
