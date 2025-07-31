@@ -5,3 +5,5 @@ robotframework-requests
 requests
 faker
 python-dotenv
+robotframework-databaselibrary
+psycopg2

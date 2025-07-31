@@ -29,21 +29,26 @@ Generate cpf
     RETURN    ${CPF}
 
 Generate password
-    [Arguments]    ${len}=${8}    ${special}=${True}    ${number}=${True}    ${upper}=${True}    ${lower}=${True}
-    ${PASS}    Password    length=${len}    special_chars=${special}    digits=${number}    upper_case=${upper}    lower_case=${lower}
+    [Arguments]    ${len}=${9}    ${special}=${True}    ${number}=${True}    ${upper}=${True}    ${lower}=${True}
+    ${PASS}=    Password    length=${len}    special_chars=${special}    digits=${number}    upper_case=${upper}    lower_case=${lower}
     RETURN       ${PASS}
 
 Generate password shortest digit
-    Generate password    len=7
+    ${PASS}=     Generate password    len=7
+    RETURN       ${PASS}
 
 Generate password without special chars
-    Generate password   special=${False}
+    ${PASS}=    Generate password   special=${False}
+    RETURN       ${PASS}
 
 Generate password without numbers
-    Generate password    number=${False}
+    ${PASS}=    Generate password    number=${False}
+    RETURN       ${PASS}
 
 Generate password without upper letters
-    Generate password    upper=${False}
+    ${PASS}=    Generate password    upper=${False}
+    RETURN       ${PASS}
 
 Generate password without lower letters
-    Generate password    lower=${False}
+    ${PASS}=    Generate password    lower=${False}
+    RETURN       ${PASS}
