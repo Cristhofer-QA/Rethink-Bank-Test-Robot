@@ -23,8 +23,8 @@ Generate valid user
 
 
 Generate user password shorter than eight digits
-    ${password}=    Generate password shortest digit    
     &{user}=        Generate valid user
+    ${password}=    Generate password shortest digit    
 
     Set To Dictionary    ${user}    password=${password}    
     ...                             confirmPassword=${password}
@@ -33,8 +33,8 @@ Generate user password shorter than eight digits
 
 
 Generate user without password
-    ${password}=    Set Variable    
     &{user}=        Generate valid user
+    ${password}=    Set Variable    
 
     Set To Dictionary    ${user}    password=${password}    
     ...                             confirmPassword=${password}
@@ -43,10 +43,19 @@ Generate user without password
 
 
 Generate user with password null
-    ${password}=    Set Variable    ${null}
     &{user}=        Generate valid user
+    ${password}=    Set Variable    ${null}
 
     Set To Dictionary    ${user}    password=${password}    
     ...                             confirmPassword=${password}
 
     RETURN               &{user}
+
+
+Generate user with cpf with fewer digits
+    ${cpf}=     Generate cpf    len=9
+    &{user}=    Generate valid user
+
+    Set To Dictionary    ${user}    cpf=${cpf}    
+
+    RETURN               &{user}    

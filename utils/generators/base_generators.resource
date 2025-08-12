@@ -30,7 +30,8 @@ Generate email
 
 
 Generate cpf
-    ${CPF}    Random Number    digits=11    fix_len=${True}
+    [Arguments]    ${len}=11
+    ${CPF}    Random Number    digits=${len}    fix_len=${True}
     RETURN    ${CPF}
 
 

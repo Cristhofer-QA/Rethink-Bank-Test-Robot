@@ -26,3 +26,8 @@ Scenario 04: Criar um usuário com senha nula
     Given que possua os dados de cadastro de um usuário, mas com a senha nula
     When realizar a requisição de cadastro de usuário
     Then usuário não deve ser cadastrado e deve retornar uma mensagens informando que a senha é fraca
+
+Scenario 05: Criar um usuário com cpf com menos dígitos
+    Given que possua os dados de cadastro de um usuário, mas com cpf com menos dígitos
+    When realizar a requisição de cadastro de usuário
+    Then usuário não deve ser cadastrado e deve retornar uma mensagens informando que o cpf é inválido

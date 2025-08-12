@@ -21,7 +21,10 @@ que possua os dados de cadastro de um usuário, mas sem a senha
 que possua os dados de cadastro de um usuário, mas com a senha nula
     &{user}    Generate user with password null
     Set Test Variable    &{user} 
-    Log To Console    ${user}
+
+que possua os dados de cadastro de um usuário, mas com cpf com menos dígitos
+    &{user}    Generate user with cpf with fewer digits
+    Set Test Variable    &{user} 
 
 realizar a requisição de cadastro de usuário
     ${response}    Create new user    &{user}
@@ -35,3 +38,6 @@ usuário não deve ser cadastrado e deve retornar uma mensagens informando que a
 
 usuário não deve ser cadastrado e deve retornar uma mensagens informando que a senha é obrigatória
     Check user not registered by password weak    ${response}
+
+usuário não deve ser cadastrado e deve retornar uma mensagens informando que o cpf é inválido
+    Check user not registered by invalid cpf    ${response}

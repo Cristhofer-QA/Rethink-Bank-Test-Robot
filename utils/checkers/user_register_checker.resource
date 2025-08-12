@@ -14,6 +14,7 @@ Resource   base_checker.resource
 ...                        server_error=500
 &{messages_response}=      success=Cadastro realizado com sucesso.
 ...                        weak_password=Senha fraca
+...                        invalid_cpf=CPF inválido
 
 
 
@@ -37,6 +38,16 @@ Check user not registered by password weak
     [Arguments]    ${response}    ${skip_test_to_failure}=${False}
 
     ${expect_message}=    Set Variable    ${messages_response.weak_password}
+
+    Check user not registered by data error    ${response}    
+    ...                                        ${expect_message}    
+    ...                                        ${skip_test_to_failure}
+
+
+Check user not registered by invalid cpf
+    [Arguments]    ${response}    ${skip_test_to_failure}=${False}
+
+    ${expect_message}=    Set Variable    ${messages_response.invalid_cpf}
 
     Check user not registered by data error    ${response}    
     ...                                        ${expect_message}    
@@ -103,7 +114,7 @@ Check message user register
           ${msg_return}=              Set Variable    Mensagem verificada. Ok!
 
           IF  ${is_expected_message} != ${True}
-              ${msg_return}=    Set Variable    A mensagem de confirmação/erro não corresponde com a esperada.\n -> Esperado:${expect_message}${\n} -> Obtido: ${message_response}
+              ${msg_return}=    Set Variable    A mensagem de confirmação/erro não corresponde com a esperada.\n -> Esperado: ${expect_message}${\n} -> Obtido: ${message_response}
           END
 
     ELSE
